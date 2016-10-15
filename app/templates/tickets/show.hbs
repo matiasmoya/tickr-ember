@@ -1,0 +1,9 @@
+<h2>{{model.subject}}</h2>
+<p>{{model.content}}</p>
+<ul>
+  {{#each model.ticketMessages as |message|}}
+    <li>({{message.from}}){{message.content}}</li>
+  {{/each}}
+</ul>
+
+{{ticket-message-form ticket=model}}
