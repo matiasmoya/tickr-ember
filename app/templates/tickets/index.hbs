@@ -1,3 +1,25 @@
 <h2>Tickets</h2>
 
-<a href="#" {{action 'logout'}}>Logout</a>
+{{#each model as |ticket|}}
+  <p>Ticket Subject: {{ticket.subject}}</p>
+{{else}}
+  {{ticket-form}}
+{{/each}}
+
+{{#if model.length}}
+  <a href="#" {{action 'toggleTicketForm'}}>
+    {{if displayTicketForm "Cancel" "Create a new ticket"}}
+  </a>
+{{else}}
+  {{ticket-form}}
+{{/if}}
+
+{{#if displayTicketForm}}
+  <div>
+    {{ticket-form}}
+  </div>
+{{/if}}
+
+<div>
+  <a href="#" {{action 'logout'}}>Logout</a>
+</div>

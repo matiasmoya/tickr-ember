@@ -1,0 +1,13 @@
+<form {{action "createTicket" on="submit"}}>
+  <label for="subject">Subject</label>
+  {{input value=subject}}
+
+  <label for="content">content</label>
+  {{input value=content type="text"}}
+
+  <button type="submit">Send</button>
+</form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
