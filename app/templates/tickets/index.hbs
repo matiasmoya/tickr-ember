@@ -1,27 +1,44 @@
-<h2>Tickets</h2>
-
-{{#each model as |ticket|}}
-  {{#link-to "tickets.show" ticket}}
-    <p>Ticket Subject: {{ticket.subject}}</p>
-  {{/link-to}}
-{{else}}
-  {{ticket-form}}
-{{/each}}
-
 {{#if model.length}}
-  <a href="#" {{action 'toggleTicketForm'}}>
-    {{if displayTicketForm "Cancel" "Create a new ticket"}}
-  </a>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="spacer spacer-bottom">
+        <button type="button" class="btn btn-block btn-primary btn-rad" {{action 'toggleTicketForm'}}>
+          {{if displayTicketForm "Cancel" "Create a new ticket"}}
+        </button>
+      </div>
+      {{#if displayTicketForm}}
+        <div>
+          {{ticket-form}}
+        </div>
+      {{/if}}
+      <div class="block-flat">
+        <div class="header">
+          <h3>Tickets</h3>
+        </div>
+        <div class="content">
+          <table class="no-border">
+            <thead class="no-border">
+              <tr>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody class="no-border-x no-border-y">
+              {{#each model as |ticket|}}
+                <tr>
+                  <td style="width:50%;">
+                    {{#link-to "tickets.show" ticket}}
+                      {{ticket.subject}}
+                    {{/link-to}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 {{else}}
   {{ticket-form}}
 {{/if}}
-
-{{#if displayTicketForm}}
-  <div>
-    {{ticket-form}}
-  </div>
-{{/if}}
-
-<div>
-  <a href="#" {{action 'logout'}}>Logout</a>
-</div>

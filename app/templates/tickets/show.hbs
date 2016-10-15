@@ -1,9 +1,26 @@
-<h2>{{model.subject}}</h2>
-<p>{{model.content}}</p>
-<ul>
+<div class="row">
+  <div class="col-md-12">
+    <div class="block-flat">
+      <div class="header">              
+        <h3>Subject: {{model.subject}}</h3>
+      </div>
+      <div class="content">
+        <p>{{model.content}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<h1>Thread</h1>
+<ul class="cbp_tmtimeline">
   {{#each model.ticketMessages as |message|}}
-    <li>({{message.from}}){{message.content}}</li>
+    <li>
+      <div class="cbp_tmicon cbp_tmicon-phone"></div>
+      <div class="cbp_tmlabel">
+        <h2>From: {{message.from}}</h2>
+        <p>{{message.content}}</p>
+      </div>
+    </li>
   {{/each}}
-</ul>
+</ul> 
 
 {{ticket-message-form ticket=model}}
