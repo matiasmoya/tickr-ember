@@ -1,2 +1,5 @@
 {{outlet}}
-{{#link-to 'login'}}Login{{/link-to}}
+
+{{#unless session.isAuthenticated}}
+  {{#link-to 'login'}}Login{{/link-to}}
+{{/unless}}
